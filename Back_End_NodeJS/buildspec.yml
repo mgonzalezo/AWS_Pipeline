@@ -1,0 +1,28 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Install Node 10"
+      - curl -sL https://deb.nodesource.com/setup_10.x | bash -
+      - apt-get install -y nodejs
+      - echo "Install Loopback Framework"
+      - npm i -g @loopback/cli
+      - echo "Install other dependencies"
+      - npm i
+  pre_build:
+    commands:
+      - echo "Start npm"
+      - sudo npm start
+  build:
+    commands:
+      - echo "Build Block - No actions taken"
+      - echo "Here we should run some tests"
+  post_build:
+    commands:
+      - echo "Post-build section, no actions taken"
+artifacts:
+  files:
+      - "**/*"
+  discard-paths: no
+  base-directory: src
